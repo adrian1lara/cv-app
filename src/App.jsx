@@ -1,33 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Container, Flex } from "@chakra-ui/react"
+import { useState } from "react"
+
+import EducationForm from "./components/educationalInfo"
+import GeneralInfo from "./components/generalInfo"
+import ExperienceForm from "./components/experienceInfo"
+import Resume from "./components/resume"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [resumeData, setResumeData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    experience: {
+      company: "",
+      position: "",
+      duration: "",
+      description: "",
+    },
+    education: {
+      school: "",
+      degree: "",
+      date: "",
+    }
+  })
+
+  const updateResume = (data) => {
+    
+    setResumeData((prevData) => ({
+      ...prevData,
+      ...data
+    }))
+  }
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Flex>
+        <Container maxW="600px" p={4} >
+        <GeneralInfo updateResume={updateResume} />
+        <EducationForm  updateResume={updateResume} />
+        <ExperienceForm  updateResume={updateResume} />
+        </Container>
+        <Resume resumeData={resumeData}/>
+      </Flex>
     </>
   )
 }
