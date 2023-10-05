@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { Button, ButtonGroup, FormControl, FormLabel,  Input } from "@chakra-ui/react"
+import { Button, ButtonGroup, FormControl, FormLabel,  Input, Textarea } from "@chakra-ui/react"
 import { Accordion, AccordionButton, AccordionItem, AccordionIcon, AccordionPanel} from "@chakra-ui/react"
 
 // eslint-disable-next-line react/prop-types
@@ -12,6 +12,8 @@ export default function ExperienceForm({ updateResume }) {
         description: "",
     })
 
+    const [experienceList, setExperienceList] = useState([]);
+
     const handleChange = (e) => {
         const {id, value} = e.target
         setFormData((prevData) => ({
@@ -20,8 +22,26 @@ export default function ExperienceForm({ updateResume }) {
         }))
     }
 
+    const handleAddExperience = () => {
+        if(formData.company && formData.position && formData.duration && formData.description){
+            setExperienceList([...experienceList, formData])
+            setFormData({
+                company: "",
+                position: "",
+                duration: "",
+                description: "",
+            })
+        }
+    }
+
+    const handleDeleteExperience = (index) => {
+        const newExperienceList = [...experienceList]
+        newExperienceList.splice(index, 1)
+        setExperienceList(newExperienceList)
+    }
+
     const handleSubmit = () => {
-        updateResume({experience: formData})
+        updateResume({experience: experienceList})
     }
     return (
         <>
@@ -42,12 +62,28 @@ export default function ExperienceForm({ updateResume }) {
                             <FormLabel htmlFor="duration">Duration</FormLabel>
                             <Input type="text" id="duration" value={formData.duration} onChange={handleChange} />
                             <FormLabel htmlFor="description">Description</FormLabel>
-                            <Input type="text" id="description" value={formData.description} onChange={handleChange} />
+                            <Textarea id="description" value={formData.description} onChange={handleChange} />
                             <ButtonGroup spacing={6} marginTop={4}>
+                                <Button onClick={handleAddExperience}>Add</Button>
                                 <Button onClick={handleSubmit}>Submit</Button>
-                                <Button>Cancel</Button>
                             </ButtonGroup>
-                            
+                            {experienceList.length > 0 && (
+                                <div>
+                                    <h2>Added Experiences:</h2>
+                                    <ul>
+                                        {experienceList.map((experience, index) => (
+                                        <li key={index}>
+                                            {experience.company} - {experience.position} (
+                                            {experience.duration})
+                                            <Button ml={2}
+                                            onClick={() => handleDeleteExperience(index)}>
+                                            Delete
+                                            </Button>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
                         </FormControl>
                     </AccordionPanel>
                 </AccordionItem>
