@@ -2,7 +2,7 @@
 
 cv-app is a web application built with Vite, React, and Chakra UI that allows users to create their CV (Curriculum Vitae) by filling out three different forms: General Info, Education Info, and Experience Info. Once the user fills out any of these forms and submits them, the CV on the side gets updated accordingly.
 
-<img src="URL_de_la_imagen" alt="Texto alternativo">
+<img src="./src/assets/readmeimg.png" alt="cv-web image">
 
 ## Features
 
