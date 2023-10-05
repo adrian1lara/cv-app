@@ -6,10 +6,10 @@ export default function Header() {
             <header>
                 <Box  p={5}
                 alignItems={"center"}
-                w={"container.md"}
-                display={"flex"}
+                justifyContent={"center"}
+                display={{ base: "flex", lg:"flex"}}
                 >
-                <Heading>Make your resume</Heading>
+                <Heading as={"h1"} size={"2xl"}>Make your resume</Heading>
                 </Box>
             </header>
         </>
