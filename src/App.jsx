@@ -1,4 +1,4 @@
-import { Container, Flex } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import { useState } from "react"
 
 import EducationForm from "./components/educationalInfo"
@@ -28,24 +28,26 @@ function App() {
 
   return (
     <>
-    <Container 
-    display={"flex"} 
-    flexDirection={"column"} 
-    maxW={"container.lg"}
-    bg={"blackAlpha.50"}
+    <Header />
+    <Box 
+    display={{ base: "flex", lg:"flex"}} 
+    flexDirection={{base:"column", lg:"row"}} 
+    justifyContent={"center"}
+    p={5}
     >
-      <Header />
-      <Flex p={6}>
-        <Container maxW="600px">
+      
+
+        <Box maxW={{ base: "100%", lg: "600px" }}
+          w={{ base: "100%", lg:"lg" }}
+        >
           <GeneralInfo updateResume={updateResume} />
           <ExperienceForm  updateResume={updateResume} />
           <EducationForm  updateResume={updateResume} />
-        </Container>
-        <Container >
+        </Box>
+        <Box ml={{ base: "0", lg: "5" }}>
           <Resume resumeData={resumeData}/>
-        </Container>
-      </Flex>
-    </Container>
+        </Box>
+    </Box>
     </>
   )
 }
