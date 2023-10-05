@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { FormControl, FormLabel, Input, ButtonGroup, Button, Textarea } from "@chakra-ui/react"
+import { FormControl, FormLabel, Input, ButtonGroup, Button, Textarea, Box } from "@chakra-ui/react"
 import { Accordion, AccordionButton, AccordionItem, AccordionIcon, AccordionPanel} from "@chakra-ui/react"
 
 // eslint-disable-next-line react/prop-types
@@ -13,6 +13,8 @@ export default function EducationForm({ updateResume }) {
         description: "",
     })
 
+    const [educationList, setEducationList] = useState([])
+
     const handleChange = (e) => {
         const {id, value} = e.target
         setFormData((prevData) => ({
@@ -21,17 +23,26 @@ export default function EducationForm({ updateResume }) {
         }))
     }
 
-    const handleCancel = () => {
-        setFormData({
-            school: "",
-            degree: "",
-            date: "",
-            description: "",
-        })
+    const handleAddEducation = () => {
+        if(formData.school && formData.degree && formData.date && formData.description){
+            setEducationList([...educationList, formData])
+            setFormData({
+                school: "",
+                degree: "",
+                date: "",
+                description: "",
+            })
+        }
+    }
+
+    const handleDeleteEducation = (index) => {
+        const newEducationList = [...educationList]
+        newEducationList.splice(index, 1)
+        setEducationList(newEducationList)
     }
 
     const handleSubmit = () => {
-        updateResume({education: formData})
+        updateResume({education: educationList})
     }
 
     return (
@@ -56,8 +67,24 @@ export default function EducationForm({ updateResume }) {
                             <Textarea id="description" value={formData.description} onChange={handleChange} />
                             <ButtonGroup spacing={6} marginTop={4}>
                                 <Button onClick={handleSubmit}>Submit</Button>
-                                <Button onClick={handleCancel}>Cancel</Button>
+                                <Button onClick={handleAddEducation}>Add</Button>
                             </ButtonGroup>
+                            {educationList.length > 0 && (
+                                <Box>
+                                    <h2>Added Education:</h2>
+                                    <ul>
+                                        {educationList.map((education, index) => (
+                                            <li key={index}>
+                                                {education.school} - {education.degree} (
+                                                    {education.date}
+                                                ) 
+                                                <Button ml={2}
+                                                onClick={() => handleDeleteEducation(index)}>Delete</Button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </Box>
+                            )}
                         </FormControl>
                     </AccordionPanel>
                 </AccordionItem>
