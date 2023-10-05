@@ -26,40 +26,40 @@ Before you begin, ensure you have met the following requirements:
 
    ```bash
    git clone https://github.com/your-username/cv-app.git
-Navigate to the project directory:
+2. Navigate to the project directory:
 
-bash
-Copy code
-cd cv-app
-Install the project dependencies:
+ ```bash
+ cd cv-app
+ ````
+3. Install the project dependencies:
 
-bash
-Copy code
+```bash
 npm install
-Usage
-Start the development server:
+```
+##Usage
+1.Start the development server:
 
-bash
-Copy code
+```bash
 npm run dev
+```
 Open your web browser and go to http://localhost:3000 to access the cv-app.
 
 Begin filling out the General Info, Education Info, and Experience Info forms. Your CV will update in real-time on the side.
 
 Save or export your completed CV as needed.
 
-Deployment
+2. Deployment
 To deploy cv-app to a production environment, follow these deployment instructions specific to your hosting platform.
 
-Built With
+**Built With
 Vite - Fast frontend development with React.
 React - A JavaScript library for building user interfaces.
 Chakra UI - A simple, modular, and accessible component library for React.
 Contributing
 If you would like to contribute to this project, please open an issue or submit a pull request. We welcome contributions from the community!
 
-License
+**License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Acknowledgments
+**Acknowledgments
 Thank you to the creators of Vite, React, and Chakra UI for providing excellent tools for building web applications.
