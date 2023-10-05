@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
-import { Box, Center, Divider, Flex, Spacer, Text } from "@chakra-ui/react";
+import { Box, Center, Divider, Flex, Spacer, Text, Heading } from "@chakra-ui/react";
 
 // eslint-disable-next-line react/prop-types
 export default function Resume({ resumeData }) {
 
     return (
         <Box> 
-            <Center textTransform={"uppercase"} as="b" fontSize={"2xl"}>
-                <h1>Resume</h1>
+            <Center>
+                <Heading as={"h1"} size={"2xl"}>
+                    Resume
+                </Heading>
             </Center>
-            <Box p={6} boxShadow={"lg"} color="black" minH={'80vh'}  w={"lg"} >
+            <Box p={6} boxShadow={"lg"} color="black" minH={'80vh'}  w={{ base: "100%", lg:"lg" }} >
                 <Text fontSize="2xl" fontWeight={"semibold"}  textTransform={"capitalize"} textAlign={"center"}>
                     {resumeData.name }
                 </Text>
