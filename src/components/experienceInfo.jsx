@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { Button, ButtonGroup, FormControl, FormLabel,  Input, Textarea } from "@chakra-ui/react"
+import { Button, ButtonGroup, FormControl, FormLabel,  Input, Textarea , Box} from "@chakra-ui/react"
 import { Accordion, AccordionButton, AccordionItem, AccordionIcon, AccordionPanel} from "@chakra-ui/react"
 
 // eslint-disable-next-line react/prop-types
@@ -68,7 +68,7 @@ export default function ExperienceForm({ updateResume }) {
                                 <Button onClick={handleSubmit}>Submit</Button>
                             </ButtonGroup>
                             {experienceList.length > 0 && (
-                                <div>
+                                <Box>
                                     <h2>Added Experiences:</h2>
                                     <ul>
                                         {experienceList.map((experience, index) => (
@@ -82,7 +82,7 @@ export default function ExperienceForm({ updateResume }) {
                                         </li>
                                         ))}
                                     </ul>
-                                </div>
+                                </Box>
                             )}
                         </FormControl>
                     </AccordionPanel>
