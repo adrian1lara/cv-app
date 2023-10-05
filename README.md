@@ -36,7 +36,7 @@ Before you begin, ensure you have met the following requirements:
 ```bash
 npm install
 ```
-##Usage
+## Usage
 1.Start the development server:
 
 ```bash
@@ -51,15 +51,15 @@ Save or export your completed CV as needed.
 2. Deployment
 To deploy cv-app to a production environment, follow these deployment instructions specific to your hosting platform.
 
-##Built With
-Vite - Fast frontend development with React.
-React - A JavaScript library for building user interfaces.
-Chakra UI - A simple, modular, and accessible component library for React.
+## Built With
+- Vite - Fast frontend development with React.
+- React - A JavaScript library for building user interfaces.
+- Chakra UI - A simple, modular, and accessible component library for React.
 Contributing
-If you would like to contribute to this project, please open an issue or submit a pull request. We welcome contributions from the community!
+- If you would like to contribute to this project, please open an issue or submit a pull request. We welcome contributions from the community!
 
-##License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-##Acknowledgments
+## Acknowledgments
 Thank you to the creators of Vite, React, and Chakra UI for providing excellent tools for building web applications.
