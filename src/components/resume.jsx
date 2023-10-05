@@ -34,15 +34,18 @@ export default function Resume({ resumeData }) {
                 
                 <Text fontSize="md" as={"b"} textTransform={"uppercase"}>Education</Text>
                 <Divider borderWidth={1} borderColor={"black"} />
-                <Box>
+                {resumeData.education.map((education, index) => (
+                    <Box key={index}>
                     <Flex>
-                        <Text fontSize={"sm"} as={"b"}> {resumeData.education.school }</Text><span> - </span>
-                        <Text fontSize={"sm"} as={"b"}>{resumeData.education.degree }</Text>
+                        <Text fontSize={"sm"} as={"b"}> {education.school }</Text><span> - </span>
+                        <Text fontSize={"sm"} as={"b"}>{education.degree }</Text>
                         <Spacer />
-                        <Text fontSize={"sm"} as={"b"}> {resumeData.education.date }</Text>
+                        <Text fontSize={"sm"} as={"b"}> {education.date }</Text>
                     </Flex>
-                    <Text>{resumeData.education.description }</Text>
+                    <Text>{education.description }</Text>
                 </Box>
+                ))}
+                
             </Box>
         </Box>
     )
