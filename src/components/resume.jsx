@@ -1,31 +1,49 @@
 /* eslint-disable react/prop-types */
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Center, Divider, Flex, Spacer, Text } from "@chakra-ui/react";
 
 // eslint-disable-next-line react/prop-types
 export default function Resume({ resumeData }) {
-    const name = resumeData.name || "";
 
     return (
-        <Container> 
-            <h1>Resume</h1>
-            <Box p={4} bg="blue.500" color="white"  minH={'80vh'}>
-                <p>Name: {name }</p>
-                <p>Email: {resumeData.email }</p>
-                <p>Phone: {resumeData.phone }</p>
-                <h2>Experience:</h2>
-                <ul>
-                    <li>Company: {resumeData.experience.company }</li>
-                    <li>Position: {resumeData.experience.position }</li>
-                    <li>Duration: {resumeData.experience.duration }</li>
-                    <li>Description: {resumeData.experience.description }</li>
-                </ul>
-                <h2>Education:</h2>
-                <ul>
-                    <li>School: {resumeData.education.school }</li>
-                    <li>Degree: {resumeData.education.degree }</li>
-                    <li>Date: {resumeData.education.date }</li>
-                </ul>
+        <Box> 
+            <Center textTransform={"uppercase"} as="b" fontSize={"2xl"}>
+                <h1>Resume</h1>
+            </Center>
+            <Box p={6} boxShadow={"lg"} color="black" minH={'80vh'}  w={"lg"} >
+                <Text fontSize="2xl" fontWeight={"semibold"}  textTransform={"capitalize"} textAlign={"center"}>
+                    {resumeData.name }
+                </Text>
+                <Flex alignItems={"center"} justifyContent={"center"} flexWrap={"wrap"} gap={1} mb={3}>
+                        <Text>{resumeData.email }</Text>
+                        <Text>{resumeData.phone }</Text>
+                        <Text>{resumeData.link }</Text>
+                </Flex>
+                <Text fontSize="md" as={"b"} textTransform={"uppercase"}>Experience</Text>
+                <Divider borderWidth={1} borderColor={"black"} />
+                {resumeData.experience.map((experience, index) => (
+                <Box mb={3} key={index}>
+                    <Flex>
+                        <Text fontSize={"sm"} as={"b"}> {experience.company }</Text><span> - </span>
+                        <Text fontSize={"sm"} as={"b"}>{experience.position }</Text>
+                        <Spacer />
+                        <Text fontSize={"sm"} as={"b"}> {experience.duration }</Text>
+                    </Flex>
+                    <Text>{experience.description }</Text>
+                </Box>
+                ))}
+                
+                <Text fontSize="md" as={"b"} textTransform={"uppercase"}>Education</Text>
+                <Divider borderWidth={1} borderColor={"black"} />
+                <Box>
+                    <Flex>
+                        <Text fontSize={"sm"} as={"b"}> {resumeData.education.school }</Text><span> - </span>
+                        <Text fontSize={"sm"} as={"b"}>{resumeData.education.degree }</Text>
+                        <Spacer />
+                        <Text fontSize={"sm"} as={"b"}> {resumeData.education.date }</Text>
+                    </Flex>
+                    <Text>{resumeData.education.description }</Text>
+                </Box>
             </Box>
-        </Container>
+        </Box>
     )
 }
