@@ -1,25 +1,31 @@
-cv-app
+# cv-app
+
 cv-app is a web application built with Vite, React, and Chakra UI that allows users to create their CV (Curriculum Vitae) by filling out three different forms: General Info, Education Info, and Experience Info. Once the user fills out any of these forms and submits them, the CV on the side gets updated accordingly.
 
-Features
-General Info Form: Fill in your personal details such as name, contact information, and a brief summary.
-Education Info Form: Add your educational background, including the institution, degree, and graduation date.
-Experience Info Form: Record your work experience, including job title, company, dates, and responsibilities.
-Live CV Preview: As you fill out the forms, a live CV preview is updated in real-time, making it easy to see how your CV looks as you input your information.
-Getting Started
+## Features
+
+- **General Info Form:** Fill in your personal details such as name, contact information, and a brief summary.
+- **Education Info Form:** Add your educational background, including the institution, degree, and graduation date.
+- **Experience Info Form:** Record your work experience, including job title, company, dates, and responsibilities.
+- **Live CV Preview:** As you fill out the forms, a live CV preview is updated in real-time, making it easy to see how your CV looks as you input your information.
+
+## Getting Started
+
 Follow these steps to get a copy of the project up and running on your local machine.
 
-Prerequisites
+### Prerequisites
+
 Before you begin, ensure you have met the following requirements:
 
-Node.js and npm installed on your machine.
-Git for cloning the repository.
-Installation
-Clone the repository:
+- Node.js and npm installed on your machine.
+- Git for cloning the repository.
 
-bash
-Copy code
-git clone https://github.com/your-username/cv-app.git
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/cv-app.git
 Navigate to the project directory:
 
 bash
