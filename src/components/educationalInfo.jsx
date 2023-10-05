@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { FormControl, FormLabel, Input, ButtonGroup, Button } from "@chakra-ui/react"
+import { FormControl, FormLabel, Input, ButtonGroup, Button, Textarea } from "@chakra-ui/react"
 import { Accordion, AccordionButton, AccordionItem, AccordionIcon, AccordionPanel} from "@chakra-ui/react"
 
 // eslint-disable-next-line react/prop-types
@@ -10,6 +10,7 @@ export default function EducationForm({ updateResume }) {
         school: "",
         degree: "",
         date: "",
+        description: "",
     })
 
     const handleChange = (e) => {
@@ -18,6 +19,15 @@ export default function EducationForm({ updateResume }) {
             ...prevData,
             [id]: value,
         }))
+    }
+
+    const handleCancel = () => {
+        setFormData({
+            school: "",
+            degree: "",
+            date: "",
+            description: "",
+        })
     }
 
     const handleSubmit = () => {
@@ -42,9 +52,11 @@ export default function EducationForm({ updateResume }) {
                             <Input type="text" id="degree" value={formData.degree} onChange={handleChange} />
                             <FormLabel htmlFor="date">Date:</FormLabel>
                             <Input type="text" id="date" value={formData.date} onChange={handleChange}/>
+                            <FormLabel htmlFor="description">Description</FormLabel>
+                            <Textarea id="description" value={formData.description} onChange={handleChange} />
                             <ButtonGroup spacing={6} marginTop={4}>
                                 <Button onClick={handleSubmit}>Submit</Button>
-                                <Button>Cancel</Button>
+                                <Button onClick={handleCancel}>Cancel</Button>
                             </ButtonGroup>
                         </FormControl>
                     </AccordionPanel>
